@@ -1,4 +1,4 @@
-# TrueGrid.CSS
+# TrueGrid.css
 Sometimes you want a grid and want to take your valuable time painstakignly building one from scratch.
 For all the other times there is TrueGrid.
 
