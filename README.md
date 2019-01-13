@@ -2,6 +2,11 @@
 Sometimes you want a grid and want to take your valuable time painstakignly building one from scratch.
 For all the other times there is TrueGrid.
 
+```html
+<link rel="stylesheet" type="text/css" href="minified/css/TrueGrid.css"/>
+<script type="text/js" src="minified/js/TrueGrid.min.js"></script>
+``` 
+
 ## What is TrueGrid?
 TrueGrid is just that, a CSS grid built with *grid* elements, **not** flexbox. This means that declairing heights and widths of elements is ridiculously easy, something that can cause massive nesting of elements in flexbox grids. 
 
@@ -13,9 +18,14 @@ Because all grid elements are positioned so that both start and end for both col
 ### Basic grids
 Getting started is as simple as:
 ```html
-<div class="grid">
+<head>
+    <link rel="stylesheet" type="text/css" href="minified/css/TrueGrid.css"/>
+</head>
+<body>
+    <div class="grid">
 
-</div>
+    </div>
+</body>
 ```
 That's it. You now have a 12x12 grid to work with. All grid boxes are in fractional units so they will size proportionally to different screen sizes.
 
@@ -54,13 +64,32 @@ Notice that you can add either or both tall and wide classes to a box to make it
 ### Advanced fetures
 ##### Custom Grids
 
-~~Grids can be customized up to 5x5 through classes. these grids will still be based in fr units BUT will allow you to size things proportionally to one another.~~
+**_NEW CUSTOM GRID BUILDING:_**
+No longer limited to 5 rows or coloumns. And no longer using classes!
 
-~~Just add `.column-#-#` or `.row-#-#`, append one `-#` for every row or column you want to add. Values can be up from 1-10fr for either row or column.~~
+To customize row or column widths or heights link the `TrueGrid.js` file at teh end of your webpage like so:
+```html
+<script type="text/js" src="minified/js/TrueGrid.min.js"></script>
+``` 
+Then in your grid element add a the row or column attribute and what ever widths or heights you would like, up to 12 rows or columns.
+```html
+<div class="grid" columns='100px 5% 3fr repeat(4, 500px)' rows='repeat(12, 100px)'>
 
-~~**_Breaking events will happen with the following:_**~~
-~~When makign a 5x5 grid do not mix numbers below 6 with numbers 6 or above. becasue of the way the classes were generated these classes are not currently available.~~
-~~example: `.cloumn-4-9-2-8-1`. This issue should be fixed in the next release.~~
+</div>
+```
+
+For access to more `.box-#c-#r` classes just pop open the `/full/scss/boxes.scss` file and change the loops to adjust for the number of rows or columns you would have.
+```scss
+@for $a from 1 through 24 {
+  @for $b from 1 through 24 {
+    .box-#{$a}-#{$b} {
+      grid-column-start: #{$a};
+      grid-row-start: #{$b};
+    }
+  }
+}
+```
+This loop would create classes for 24 rows and columns.
 
 ##### Customizing Further
 
