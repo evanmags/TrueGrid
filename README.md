@@ -29,8 +29,6 @@ Getting started is as simple as:
 ```
 That's it. You now have a 12x12 grid to work with. All grid boxes are in fractional units so they will size proportionally to different screen sizes.
 
-**_There are currently NO features for truely responsive design yet. That is still in the works_**
-
 To add a box just add another div and give it `class='box'` like so,
 ```html
 <div class="grid">
@@ -61,8 +59,26 @@ With `.wide-#` and `.tall-#` classes you can easily expand a box to take up the 
 ```
 Notice that you can add either or both tall and wide classes to a box to make it as large as you would like.
 
+**_Responsive classes are here!_**
+
+All responsive classes are just as you would rind in bootstrap.
+Just add `-sm`, `-md`,`-lg`, or `-xl` to your class to make any element appear differently at different viewport widths. This applies to all `.box`, `.tall`, and `.wide` classes.
+For example if you wanted an element to be 12 unites wide on small screens but 6 units on large screens it would look like this:
+```html
+<div class="grid">
+    <div class="box-1-1 wide-12 wide-6-lg">1</div>
+</div>
+```
+
+And if you wanted that same element to move as screens got larger:
+```html
+<div class="grid">
+    <div class="box-1-1 box-4-1-lg wide-12 wide-6-lg">1</div>
+</div>
+```
+
 ### Advanced fetures
-##### Custom Grids
+#### Custom Grids
 
 **_NEW CUSTOM GRID BUILDING:_**
 No longer limited to 5 rows or coloumns. And no longer using classes!
@@ -72,6 +88,7 @@ To customize row or column widths or heights link the `TrueGrid.js` file at teh 
 <script type="text/js" src="minified/js/TrueGrid.min.js"></script>
 ``` 
 Then in your grid element add a the row or column attribute and what ever widths or heights you would like, up to 12 rows or columns.
+`
 ```html
 <div class="grid" columns='100px 5% 3fr repeat(4, 500px)' rows='repeat(12, 100px)'>
 
@@ -91,7 +108,7 @@ For access to more `.box-#c-#r` classes just pop open the `/full/scss/boxes.scss
 ```
 This loop would create classes for 24 rows and columns.
 
-##### Customizing Further
+#### Customizing Further
 
 To truely customize your TrueGrid experience you will have to open the source file. Luckily there is only one thing to change! In the `TrueGrid.css` file within the `/full` directory the first class is `.grid` (your main grid class).
 ```css
