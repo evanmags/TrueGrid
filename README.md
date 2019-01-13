@@ -88,13 +88,12 @@ To customize row or column widths or heights link the `TrueGrid.js` file at teh 
 <script type="text/js" src="minified/js/TrueGrid.min.js"></script>
 ``` 
 Then in your grid element add a the row or column attribute and what ever widths or heights you would like, up to 12 rows or columns.
-`
+These attributes can be used the same as any `grid-template-column` or `grid-template-row` property in css.
 ```html
 <div class="grid" columns='100px 5% 3fr repeat(4, 500px)' rows='repeat(12, 100px)'>
 
 </div>
 ```
-
 For access to more `.box-#c-#r` classes just pop open the `/full/scss/boxes.scss` file and change the loops to adjust for the number of rows or columns you would have.
 ```scss
 @for $a from 1 through 24 {
@@ -123,7 +122,7 @@ To truely customize your TrueGrid experience you will have to open the source fi
   grid-column-gap: 5px;
 }
 ```
-Here we see the initial set up, you can change any of the properties except `display: grid;` and still be save. For a truely customizable grid experience youll want to play with the four classes below:
+Here we see the initial set up, you can change any of the properties except `display: grid;` and still be safe. For a truely customizable grid experience youll want to play with the four classes below:
 ```css
 .grid {
   grid-template-rows: repeat(12, 1fr);
