@@ -54,13 +54,13 @@ Notice that you can add either or both tall and wide classes to a box to make it
 ### Advanced fetures
 ##### Custom Grids
 
-Grids can be customized up to 5x5 through classes. these grids will still be based in fr units BUT will allow you to size things proportionally to one another.
+~~Grids can be customized up to 5x5 through classes. these grids will still be based in fr units BUT will allow you to size things proportionally to one another.~~
 
-Just add `.column-#-#` or `.row-#-#`, append one `-#` for every row or column you want to add. Values can be up from 1-10fr for either row or column.
+~~Just add `.column-#-#` or `.row-#-#`, append one `-#` for every row or column you want to add. Values can be up from 1-10fr for either row or column.~~
 
-**_Breaking events will happen with the following:_**
-When makign a 5x5 grid do not mix numbers below 6 with numbers 6 or above. becasue of the way the classes were generated these classes are not currently available.
-example: `.cloumn-4-9-2-8-1`. This issue should be fixed in the next release.
+~~**_Breaking events will happen with the following:_**~~
+~~When makign a 5x5 grid do not mix numbers below 6 with numbers 6 or above. becasue of the way the classes were generated these classes are not currently available.~~
+~~example: `.cloumn-4-9-2-8-1`. This issue should be fixed in the next release.~~
 
 ##### Customizing Further
 
