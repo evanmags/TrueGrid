@@ -3,8 +3,8 @@ Sometimes you want a grid and want to take your valuable time painstakignly buil
 For all the other times there is TrueGrid.
 
 ```html
-<link rel="stylesheet" type="text/css" href="minified/css/TrueGrid.css"/>
-<script type="text/js" src="minified/js/TrueGrid.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/TrueGrid.min.css"/>
+<script type="text/js" src="js/TrueGrid.min.js"></script>
 ``` 
 
 ## What is TrueGrid?
@@ -19,7 +19,7 @@ Because all grid elements are positioned so that both start and end for both col
 Getting started is as simple as:
 ```html
 <head>
-    <link rel="stylesheet" type="text/css" href="minified/css/TrueGrid.css"/>
+    <link rel="stylesheet" type="text/css" href="css/TrueGrid.min.css"/>
 </head>
 <body>
     <div class="grid">
