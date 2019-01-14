@@ -1,24 +1,40 @@
-//There is a majot error in building the 5x5 grids, the files get to be massive and therefor had to be portioned out.
-//currently we only have access to 5x5grids of proportions 1-1-1-1-1 to 5-5-5-5-5 OR 6-6-6-6-6 to 10-10-10-10-10
-//there is no cross over so classes such as .column-8-5-4-3-9 DO NOT exist.
+//Gap between rows and columns (equal by default)
+$rowGap: 5px;
+$colGap: $rowGap;
 
-$width: 90vw;
+//Main grid building variables
 $height: 90vh;
-$gap: 5px;
+$width: 90vw;
+$gridUnit: fr;
+$gridScale: 1;
+$gridRepeat: 12;
+
+//Subgrid buiding variables
+$subUnit: $gridUnit;
+$subScale: $gridScale;
+$subRepeat: $gridRepeat;
 
 
-@import url('boxes.scss');
-@import url('WideTall.scss');
+//color array list for utility classes
+$colorList: red, orange, yellow, green, blue, indigo, violet, purple, white, grey, black;
+
+//size selector list
+$breakpoints: (
+  sm:( min-width: 576px ),
+  md:( min-width: 720px ),
+  lg:( min-width: 960px ),
+  xl:( min-width: 1140px )
+);
 
 .grid{
   width: $width;
   height: $height;
   margin: calc((100vh - #{$height})/2) auto;
   display: grid;
-  grid-template-rows: repeat(10, 1fr);
-  grid-template-columns: repeat(10, 1fr);
-  grid-row-gap: $gap;
-  grid-column-gap: $gap;
+  grid-template-rows: repeat(#{$gridRepeat}, #{$gridScale}#{$gridUnit});
+  grid-template-columns: repeat(#{$gridRepeat}, #{$gridScale}#{$gridUnit});
+  grid-row-gap: $rowGap;
+  grid-column-gap: $colGap;
 }
 
 .subGrid {
@@ -26,41 +42,91 @@ $gap: 5px;
   height: 100%;
   margin: 0;
   display: grid;
-  grid-template-rows: repeat(10, 1fr);
-  grid-template-columns: repeat(10, 1fr);
-  grid-row-gap: $gap;
-  grid-column-gap: $gap;
+  grid-template-rows: repeat(#{$subRepeat}, #{$subScale}#{$subUnit});
+  grid-template-columns: repeat(#{$subRepeat}, #{$subScale}#{$subUnit});
+  grid-row-gap: $rowGap;
+  grid-column-gap: $colGap;
 }
 
 [class*='box']{
-  border-radius: $gap;
+  border-radius: $rowGap;
 }
 
-.green {
-  background: green;
-  opacity: .5;
-}
-
-.red {
-  background: red;
-  opacity: .5;
-}
-
-.blue {
-  background: blue;
-  opacity: .5;
-}
-
-.orange {
-  background: orange;
-  opacity: .5;
-}
-
-.black {
-  background: black;
-  opacity: .5;
+//Utility classes for quick visuals
+@each $color in $colorList {
+   .#{$color}{
+    background: #{$color};
+    opacity: .5;
+  }
 }
 
 .circle{
   border-radius: 100%;
+}
+
+/*** extra small or all screens ***/
+
+/*** Box classes ***/
+.box {
+  grid-row-start: 1;
+  grid-column-start: 1;
+  grid-row-end: span 1;
+  grid-column-end: span 1;
+}
+@for $a from 1 through 12 {
+  @for $b from 1 through 12 {
+    .box-#{$a}-#{$b} {
+      grid-column-start: #{$a};
+      grid-row-start: #{$b};
+    }
+  }
+}
+
+/*** Height modifier classes ***/
+@for $a from 1 through 12 {
+  .tall-#{$a} {
+    grid-row-end: span#{$a};
+  }
+}
+
+/*** Width modifier classes ***/
+@for $a from 1 through 12 {
+  .wide-#{$a} {
+    grid-column-end: span#{$a};
+  }
+}
+
+@each $label, $map in $breakpoints {
+  $size: map-get($map, min-width);
+  @media only screen and (min-width: #{$size}) {
+    /*** Box classes ***/
+    .box-#{$label} {
+      grid-row-start: 1;
+      grid-column-start: 1;
+      grid-row-end: span 1;
+      grid-column-end: span 1;
+    }
+    @for $a from 1 through 12 {
+      @for $b from 1 through 12 {
+        .box-#{$a}-#{$b}-#{$label} {
+          grid-column-start: #{$a};
+          grid-row-start: #{$b};
+        }
+      }
+    }
+
+    /*** Height modifier classes ***/
+    @for $a from 1 through 12 {
+      .tall-#{$a}-#{$label} {
+        grid-row-end: span #{$a};
+      }
+    }
+
+    /*** Width modifier classes ***/
+    @for $a from 1 through 12 {
+      .wide-#{$a}-#{$label} {
+        grid-column-end: span #{$a};
+      }
+    }
+  }
 }
