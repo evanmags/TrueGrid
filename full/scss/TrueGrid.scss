@@ -64,8 +64,6 @@ $breakpoints: (
   border-radius: 100%;
 }
 
-/*** extra small or all screens ***/
-
 /*** Box classes ***/
 .box {
   grid-row-start: 1;
@@ -73,11 +71,11 @@ $breakpoints: (
   grid-row-end: span 1;
   grid-column-end: span 1;
 }
-@for $a from 1 through 12 {
-  @for $b from 1 through 12 {
-    .box-#{$a}-#{$b} {
-      grid-column-start: #{$a};
-      grid-row-start: #{$b};
+@for $c from 1 through 12 {
+  @for $r from 1 through 12 {
+    .box-#{$c}-#{$r} {
+      grid-column-start: #{$c};
+      grid-row-start: #{$r};
     }
   }
 }
@@ -106,11 +104,11 @@ $breakpoints: (
       grid-row-end: span 1;
       grid-column-end: span 1;
     }
-    @for $a from 1 through 12 {
-      @for $b from 1 through 12 {
-        .box-#{$a}-#{$b}-#{$label} {
-          grid-column-start: #{$a};
-          grid-row-start: #{$b};
+    @for $c from 1 through 12 {
+      @for $r from 1 through 12 {
+        .box-#{$c}-#{$r}-#{$label} {
+          grid-column-start: #{$c};
+          grid-row-start: #{$r};
         }
       }
     }
